@@ -10,6 +10,7 @@ public class MainActivity extends LoggingActivity {
 
     private Button trueButton;
     private Button falseButton;
+    private Button prevButton;
     private Button nextButton;
     private TextView questionView;
 
@@ -31,6 +32,7 @@ public class MainActivity extends LoggingActivity {
 
         trueButton = findViewById(R.id.true_button);
         falseButton = findViewById(R.id.false_button);
+        prevButton = findViewById(R.id.prev_button);
         nextButton = findViewById(R.id.next_button);
         questionView = findViewById(R.id.question);
 
@@ -47,6 +49,19 @@ public class MainActivity extends LoggingActivity {
             @Override
             public void onClick(View v) {
                 onAnswerSelected(false);
+            }
+        });
+
+        prevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentQuestionIndex == 0) {
+                    currentQuestionIndex = mQuestionBank.length - 1;
+                } else {
+                    currentQuestionIndex--;
+                }
+
+                applyCurrentQuestion();
             }
         });
 
