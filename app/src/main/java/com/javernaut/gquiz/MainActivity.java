@@ -27,10 +27,8 @@ public class MainActivity extends LoggingActivity {
             new Question(R.string.question_mideast, false),
             new Question(R.string.question_africa, false),
             new Question(R.string.question_americas, true),
-            new Question(R.string.question_asia, true)
-    };
+            new Question(R.string.question_asia, true)};
 
-    private int numberOfQuestions = mQuestionBank.length;
     private int answeredQuestions = 0;
     private int correctAnswers = 0;
     private int currentQuestionIndex = 0;
@@ -118,13 +116,13 @@ public class MainActivity extends LoggingActivity {
     }
 
     private void onAnswerSelected(boolean currentAnswer) {
-        boolean wasTheAnswerCorrect = currentAnswer == getCurrentQuestion().getCorrectAnswer();
-        if (wasTheAnswerCorrect) {
+        boolean TheAnswerCorrect = currentAnswer == getCurrentQuestion().getCorrectAnswer();
+        if (TheAnswerCorrect) {
             correctAnswersMap.put(currentQuestionIndex, true);
             makeQuestionAnswered();
         }
 
-        showToast(wasTheAnswerCorrect ? R.string.correct_toast : R.string.incorrect_toast);
+        showToast(TheAnswerCorrect ? R.string.correct_toast : R.string.incorrect_toast);
     }
 
     private void makeQuestionAnswered() {
@@ -147,6 +145,8 @@ public class MainActivity extends LoggingActivity {
     }
 
     private void showCorrectAnswers() {
+        int numberOfQuestions = mQuestionBank.length;
+
         Toast.makeText(MainActivity.this,
                 ("Answered: " + answeredQuestions + "/" + numberOfQuestions + "\n" +
                         "Correct answers: " + correctAnswers),
